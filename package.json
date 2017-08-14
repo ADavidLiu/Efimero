@@ -1,0 +1,17 @@
+{
+  "name": "efimero",
+  "version": "1.0.0",
+  "description": "Proyecto de Computación Física",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node js/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "serialport": "^5.0.0",
+    "socket.io": "^2.0.3"
+  }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Efímero</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                height: 100vh;
+                background-image: url("bg.jpg");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+            .lab {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+            .btns {
+                position: fixed;
+                width: 100%;
+                height: auto;
+                z-index: 9999999;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .btn {
+                height: 50px;
+                width: 200px;
+                border: 0;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 2px;
+                box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+                font-size: 16px;
+            }
+            .btn:focus {
+                outline: none;
+            }
+            .btn:active {
+                outline: none;
+                border: 0;
+                transform: translateY(2px);
+            }
+            .btn--empty {
+                background-color: #e74c3c;
+                border-bottom: 5px solid #c0392b;
+            }
+            .btn--full {
+                background-color: #2ecc71;
+                border-bottom: 5px solid #27ae60;
+            }
+            .btn + .btn {
+                margin-top: 15px;
+            }
+            @media screen and (min-width: 600px) {
+                .btns {
+                    flex-direction: row;
+                }
+                .btn + .btn {
+                    margin-left: 15px;
+                    margin-top: 0;
+                }
+            }
+            .leds {
+                opacity: 0.75;
+                position: fixed;
+                z-index: 999999;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: auto;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+            }
+            .led {
+                height: 70%;
+                width: 16.667%;
+            }
+            .led--verde {
+                background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(4,242,0,0.65) 100%);
+                background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(4,242,0,0.65) 100%);
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(4,242,0,0.65) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a604f200',GradientType=0 );
+            }
+            .led--rojo {
+                background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(255,0,0,0.65) 100%);
+                background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(255,0,0,0.65) 100%);
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(255,0,0,0.65) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6ff0000',GradientType=0 );
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="btns">
+            <button class="btn btn--empty" id="isEmpty">isEmpty</button>
+            <button class="btn btn--full" id="isNotEmpty">isNotEmpty</button>
+        </div>
+
+        <div class="leds">
+            <div class="led led--rojo" id="led-0"></div>
+            <div class="led led--rojo" id="led-1"></div>
+            <div class="led led--rojo" id="led-2"></div>
+            <div class="led led--rojo" id="led-3"></div>
+            <div class="led led--rojo" id="led-4"></div>
+            <div class="led led--rojo" id="led-5"></div>
+        </div>
+
+        <div class="lab" id="particles-js"></div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="client.js"></script>
+    </body>
+
+</html>
