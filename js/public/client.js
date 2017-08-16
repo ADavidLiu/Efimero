@@ -9,11 +9,25 @@ function startParticles() {
     $(".lab").fadeIn(1000);
 }
 
+function iniciarEfectos() {
+    startParticles();
+    cambiarColor("1");
+}
+
+function detenerEfectos() {
+    stopParticles();
+    cambiarColor("0");
+}
+
 $("#isEmpty").click(function () {
     socket.emit("isEmpty", "1");
+    startParticles();
+    cambiarColor("1");
 });
 $("#isNotEmpty").click(function () {
     socket.emit("isEmpty", "0");
+    stopParticles();
+    cambiarColor("0");
 });
 
 // "LEDs"
@@ -24,7 +38,7 @@ function cambiarColor(state) {
         (function (i) {
             setTimeout(function () {
                 if (state === "1") {
-                    $("#led-" + (numLeds - i)).removeClass().addClass("led led--rojo");
+                    $("#led-" + (numLeds - i - 1)).removeClass().addClass("led led--rojo");
                 } else {
                     $("#led-" + i).removeClass().addClass("led led--verde");
                 }
@@ -34,7 +48,7 @@ function cambiarColor(state) {
 }
 
 // Comunicación en tiempo real
-var url = "http://c7c35989.ngrok.io";
+var url = "http://d128e21b.ngrok.io";
 var local = "http://localhost:3000";
 var socket = io.connect(url);
 
@@ -42,10 +56,8 @@ socket.on('isEmpty', function (datos) {
     var state = datos.state;
     console.log(state);
     if (state === "1") { // 1 = vacío/inciar efectos, 0 = lleno/cancelar efectos.
-        startParticles();
-        cambiarColor("1");
+        iniciarEfectos();
     } else {
-        stopParticles();
-        cambiarColor("0");
+        detenerEfectos();
     }
 });

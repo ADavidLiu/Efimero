@@ -14,15 +14,15 @@ app.get('/', function (req, res) {
 
 // PUERTO SERIAL
 const serialport = require("serialport/test");
-const MockBinding = serialport.Binding;
+//const MockBinding = serialport.Binding;
 
 // Datos de prueba
-MockBinding.createPort('/dev/ROBOT', { echo: true, record: true })
-const port = new serialport('/dev/ROBOT')
+/*MockBinding.createPort('/dev/ROBOT', { echo: true, record: true })
+const port = new serialport('/dev/ROBOT')*/
 
-/*const port = new serialport("/dev/tty-usbserial1", {
+const port = new serialport("/dev/cu.usbmodem1410", {
     baudRate: 57600
-});*/
+});
 
 var datos;
 
