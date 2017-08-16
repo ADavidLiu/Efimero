@@ -14,6 +14,8 @@ function iniciarEfectos() {
     cambiarColor("1");
 }
 
+iniciarEfectos();
+
 function detenerEfectos() {
     stopParticles();
     cambiarColor("0");
@@ -55,9 +57,11 @@ var socket = io.connect(url);
 socket.on('isEmpty', function (datos) {
     var state = datos.state;
     console.log(state);
-    if (state === "1") { // 1 = vacío/inciar efectos, 0 = lleno/cancelar efectos.
-        iniciarEfectos();
-    } else {
+    if (state === "0") { // 1 = vacío/inciar efectos, 0 = lleno/cancelar efectos.
+        console.log("SE DETUVO");
         detenerEfectos();
+    } else {
+        console.log("INICIÓ");
+        iniciarEfectos();
     }
 });
