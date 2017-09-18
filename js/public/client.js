@@ -14,7 +14,7 @@ function iniciarEfectos() {
     cambiarColor("1");
 }
 
-iniciarEfectos();
+detenerEfectos();
 
 function detenerEfectos() {
     stopParticles();
@@ -50,14 +50,14 @@ function cambiarColor(state) {
 }
 
 // Comunicación en tiempo real
-var url = "http://d128e21b.ngrok.io";
+var url = "http://4f4a5bf9.ngrok.io";
 var local = "http://localhost:3000";
 var socket = io.connect(url);
 
 socket.on('isEmpty', function (datos) {
     var state = datos.state;
     console.log(state);
-    if (state === "0") { // 1 = vacío/inciar efectos, 0 = lleno/cancelar efectos.
+    if (state === "1") { // 1 = vacío/inciar efectos, 0 = lleno/cancelar efectos.
         console.log("SE DETUVO");
         detenerEfectos();
     } else {

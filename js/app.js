@@ -20,17 +20,11 @@ const serialport = require("serialport");
 /*MockBinding.createPort('/dev/ROBOT', { echo: true, record: true })
 const port = new serialport('/dev/ROBOT')*/
 
-const port = new serialport("/dev/cu.wchusbserial1410", {
+const port = new serialport("/dev/cu.wchusbserial1420", {
     baudRate: 57600
 });
 
 var datos;
-var cerrado = {
-    data: [0, 0, 224, 224, 0, 0, 224, 0]
-};
-var abierto = {
-    data: [224, 0, 0, 224, 224, 0, 0, 224, 0]
-}
 
 var valor;
 
@@ -49,22 +43,4 @@ port.on('data', function (data) {
     io.emit("isEmpty", {
         state: valor
     });
-    /*io.on('connection', function (socket) {
-        console.log('Un usuario se ha conectado');
-        console.log(datos);
-        socket.broadcast.emit("isEmpty", {
-            state: valor
-        });
-    });*/
 });
-
-/*io.on('connection', function (socket) {
-    console.log('Un usuario se ha conectado');
-    socket.on("isEmpty", function (state) {
-        console.log(state);
-        console.log(datos);
-        socket.broadcast.emit("isEmpty", {
-            state: datos
-        });
-    });
-});*/

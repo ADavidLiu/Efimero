@@ -20,13 +20,13 @@ void setup() {
 
 void loop() {
     int pirLectura = digitalRead(pir);
-    delay(2000); // El delay es esencial
+    delay(6000); // El delay es esencial
     Serial.println(pirLectura);
     if (pirLectura == HIGH) {
-        color(0, 0, 255);
+        color(255, 0, 0);
         girar();
     } else {
-        color(255, 0, 0);
+        color(0, 255, 0);
         parar();
     }
 }
